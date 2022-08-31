@@ -64,18 +64,18 @@ def battleship_game():
     turn = 'Player'
     player_fleet = 5
     ai_fleet = 5 
-    
-    while player_fleet >= 5 or ai_fleet >= 5:
+
+    while player_fleet <= 5 or ai_fleet <= 5:
         for i in user_board:
             if turn == 'Player':
                 print('Your Turn')
                 hit = input()
                 if hit not in user_board.keys():
                     print('You fired outside the war-zone. Try again!')
-                elif computer_board()[hit] == '@':
+                elif ai_board[hit] == '@':
                     ai_fleet -= 1
-                    print('Nice shot! Ship destroyed!')
-                    print(f'Player ships: {player_fleet} | Computer ships: {ai_fleet}')
+                    print(f'Nice shot! Ship destroyed! {ai_fleet} to go')
+                    break
                 else:
                     print('You missed! ')
                     break 
@@ -86,19 +86,25 @@ def battleship_game():
                 print(hit[0])
                 if user_board[hit[0]] == '@':
                     player_fleet -= 1
-                    print('Computer destoyed your ship')
+                    print(f'Computer destoyed your ship! still {player_fleet}')
+                    break
                 else:
                     print('Computer missed your ships\n')
-                    print(f'Player ships: {player_fleet} | Computer ships; {ai_fleet}')
                     break
-                    
+
+        if ai_fleet == 0: 
+            print('You Won The Battle')
+            break
+        if player_fleet == 0:
+            print('You Lost The Battle')
+            break
+        
         if turn == 'Player':
             turn = 'Computer'
         else:
-            turn = 'Player' 
+            turn = 'Player'
+        print(f'Player ships:{player_fleet}|Computer ships:{ai_fleet}')   
 
-     
-        
-            
 
 battleship_game()
+
