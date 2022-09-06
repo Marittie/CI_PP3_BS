@@ -1,4 +1,7 @@
 import random
+import time
+
+time.sleep(0.5)
 
 
 def get_playername():
@@ -12,11 +15,11 @@ def computer_board():
     Function for the computer that places 5 ships randomly
     """
     board = {
-        '1A':' ', '2A':' ', '3A':' ', '4A':' ', '5A':' ',
-        '1B':' ', '2B':' ', '3B':' ', '4B':' ', '5B':' ',
-        '1C':' ', '2C':' ', '3C':' ', '4C':' ', '5C':' ',
-        '1D':' ', '2D':' ', '3D':' ', '4D':' ', '5D':' ',
-        '1E':' ', '2E':' ', '3E':' ', '4E':' ', '5E':' ',
+        '1A': ' ', '2A': ' ', '3A': ' ', '4A': ' ', '5A': ' ',
+        '1B': ' ', '2B': ' ', '3B': ' ', '4B': ' ', '5B': ' ',
+        '1C': ' ', '2C': ' ', '3C': ' ', '4C': ' ', '5C': ' ',
+        '1D': ' ', '2D': ' ', '3D': ' ', '4D': ' ', '5D': ' ',
+        '1E': ' ', '2E': ' ', '3E': ' ', '4E': ' ', '5E': ' ',
         }
     fleet_battle = random.sample(board.keys(), 5)
     for fleet in fleet_battle:
@@ -29,15 +32,15 @@ def player_board():
     Function to create a board for the user where to place the ships
     """
     board = {
-        '1A':' ', '2A':' ', '3A':' ', '4A':' ', '5A':' ',
-        '1B':' ', '2B':' ', '3B':' ', '4B':' ', '5B':' ',
-        '1C':' ', '2C':' ', '3C':' ', '4C':' ', '5C':' ',
-        '1D':' ', '2D':' ', '3D':' ', '4D':' ', '5D':' ',
-        '1E':' ', '2E':' ', '3E':' ', '4E':' ', '5E':' ',
+        '1A': ' ', '2A': ' ', '3A': ' ', '4A': ' ', '5A': ' ',
+        '1B': ' ', '2B': ' ', '3B': ' ', '4B': ' ', '5B': ' ',
+        '1C': ' ', '2C': ' ', '3C': ' ', '4C': ' ', '5C': ' ',
+        '1D': ' ', '2D': ' ', '3D': ' ', '4D': ' ', '5D': ' ',
+        '1E': ' ', '2E': ' ', '3E': ' ', '4E': ' ', '5E': ' ',
         }
     fleet_battle = []
     print('Where do you want to place your fleet? You have 5 ships!\n')
-    print('You must choose a number(1 to 5) and a letter(A to E)')
+    print('You must choose a number(1 to 5) and a letter(A to E). Example: 1A')
     while len(fleet_battle) < 5:
         fleet = input()
         if fleet not in board.keys():
@@ -67,7 +70,8 @@ def display_board(board):
     print('-+-+-+-+-+-+-+-+-+-+-+')
     print('E| ' + board['1E'] + ' | ' + board['2E'] + ' | ' + board['3E'] + ' | ' + board['4E'] + ' | ' + board['5E'] + ' |')
     print('-+-+-+-+-+-+-+-+-+-+-+')
-    
+    return board
+
 
 def battleship_game():
     """
@@ -106,12 +110,12 @@ def battleship_game():
                 elif ai_board[hit] == '@':
                     ai_fleet -= 1
                     print(f'Nice shot! Ship destroyed! {ai_fleet} to victory!')
-                    
                 else:
-                    print('You missed! \n') 
+                    print('You missed! \n')
                 user_choice.append(hit)
                 break
-        for i in user_board:       
+        time.sleep(0.5)
+        for i in ai_board:       
             if turn == 'Computer':
                 print('Computer Turn')
                 hit = random.sample(user_board.keys(), 1)
@@ -124,6 +128,7 @@ def battleship_game():
                 else:
                     print('Computer missed your ships!\n')
                 ai_choice.append(hit)
+                display_board(ai_board)
                 break
         if ai_fleet == 0: 
             print('You Won The Battle')
@@ -131,13 +136,12 @@ def battleship_game():
         if player_fleet == 0:
             print('You Lost The Battle')
             break
-        
         if turn == f'{name}':
             turn = 'Computer'
         else:
             turn = f'{name}'
-        print(f'{name} ships:{player_fleet}|Computer ships:{ai_fleet}\n') 
-
+        print(f'{name} ships:{player_fleet}|Computer ships:{ai_fleet}\n')
+        print('====================================') 
     # Variable to start the game again or to end it once the battle between
     #  the user and the computer has ended.   
     play_again = input('Do you want to play again? (y/n)')
@@ -145,6 +149,12 @@ def battleship_game():
         battleship_game()
     else:
         print('Bye! Thanks for Playing!')
+        
+
+print("""
+Welcome To Battleship Admiral!
+We've spotted an enemy fleet in our harbour and it's up to you to sink them!
+""")
 
 
 battleship_game()
