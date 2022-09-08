@@ -1,8 +1,6 @@
 import random
 import time
 
-time.sleep(0.5)
-
 
 def get_playername():
     playername = input('Enter your name: ')
@@ -75,15 +73,20 @@ def display_board(board):
     has selected 5 slots for 5 ships.
     """
     print('---1---2---3---4---5---')
-    print('A| ' + board['1A'] + ' | ' + board['2A'] + ' | ' + board['3A'] + ' | ' + board['4A'] + ' | ' + board['5A'] + ' |')
+    print('A| ' + board['1A'] + ' | ' + board['2A'] + ' | \
+' + board['3A'] + ' | ' + board['4A'] + ' | ' + board['5A'] + ' |')
     print('-+-+-+-+-+-+-+-+-+-+-+')
-    print('B| ' + board['1B'] + ' | ' + board['2B'] + ' | ' + board['3B'] + ' | ' + board['4B'] + ' | ' + board['5B'] + ' |')
+    print('B| ' + board['1B'] + ' | ' + board['2B'] + ' | \
+' + board['3B'] + ' | ' + board['4B'] + ' | ' + board['5B'] + ' |')
     print('-+-+-+-+-+-+-+-+-+-+-+')
-    print('C| ' + board['1C'] + ' | ' + board['2C'] + ' | ' + board['3C'] + ' | ' + board['4C'] + ' | ' + board['5C'] + ' |')
+    print('C| ' + board['1C'] + ' | ' + board['2C'] + ' | \
+' + board['3C'] + ' | ' + board['4C'] + ' | ' + board['5C'] + ' |')
     print('-+-+-+-+-+-+-+-+-+-+-+')
-    print('D| ' + board['1D'] + ' | ' + board['2D'] + ' | ' + board['3D'] + ' | ' + board['4D'] + ' | ' + board['5D'] + ' |')
+    print('D| ' + board['1D'] + ' | ' + board['2D'] + ' | \
+' + board['3D'] + ' | ' + board['4D'] + ' | ' + board['5D'] + ' |')
     print('-+-+-+-+-+-+-+-+-+-+-+')
-    print('E| ' + board['1E'] + ' | ' + board['2E'] + ' | ' + board['3E'] + ' | ' + board['4E'] + ' | ' + board['5E'] + ' |')
+    print('E| ' + board['1E'] + ' | ' + board['2E'] + ' | \
+' + board['3E'] + ' | ' + board['4E'] + ' | ' + board['5E'] + ' |')
     print('-+-+-+-+-+-+-+-+-+-+-+')
     return board
 
@@ -102,13 +105,13 @@ def battleship_game():
     # Variable to display the player's board
     time.sleep(0.5)
     display_board(user_board)
-    print('====================================')   
+    print('====================================')
     turn = f'{name}'
     player_fleet = 5
     ai_fleet = 5
 
     user_choice = []
-    ai_choice = []  
+    ai_choice = []
     while player_fleet <= 5 or ai_fleet <= 5:
         for i in user_board:
             if turn == f'{name}':
@@ -119,7 +122,7 @@ def battleship_game():
                     print('You hit that slot already! Focus!\n')
                 elif ai_board[hit] == '@':
                     ai_fleet -= 1
-                    print(f'Nice shot! Ship destroyed! {ai_fleet} to victory!')
+                    print('Nice shot! Ship destroyed!')
                     hit_board[hit] = 'X'
                 elif hit not in user_board.keys():
                     print('You fired outside the war-zone. Focus!\n')
@@ -127,19 +130,21 @@ def battleship_game():
                     print('You missed! \n')
                     hit_board[hit] = '0'
                 user_choice.append(hit)
+                time.sleep(1)
                 display_board(hit_board)
                 break
         time.sleep(1.5)
-        for i in ai_board:       
+        for i in ai_board:
             if turn == 'Computer':
                 print('Computer Turn')
                 hit = random.sample(user_board.keys(), 1)
                 print(hit[0])
+                time.sleep(1)
                 if hit in ai_choice:
                     print('Computer hit that slot already!\n')
                 elif user_board[hit[0]] == '@':
                     player_fleet -= 1
-                    print(f'Computer destoyed your ship! {player_fleet} left!')
+                    print('Computer destoyed your ship!')
                 else:
                     print('Computer missed your ships!\n')
                 ai_choice.append(hit)
@@ -154,13 +159,15 @@ def battleship_game():
             turn = 'Computer'
         else:
             turn = f'{name}'
+            time.sleep(0.7)
         print()
         print(f'{name} ships:{player_fleet}|Computer ships:{ai_fleet}\n')
-        print('====================================') 
+        print('====================================')
     # Variable to start the game again or to end it once the battle between
-    #  the user and the computer has ended.   
+    #  the user and the computer has ended.
+    time.sleep(1)
     play_again = input('Do you want to play again? (y/n)\n')
-    if play_again == 'y':       
+    if play_again == 'y':
         battleship_game()
     else:
         print('Bye! Thanks for Playing!')
@@ -172,9 +179,9 @@ print("""
            / __  / __ `/ __/ __/ / _ \/ ___/ __ \/ / __ \/ ___/
           / /_/ / /_/ / /_/ /_/ /  __(__  ) / / / / /_/ (__  )
          /_____/\__,_/\__/\__/_/\___/____/_/ /_/_/ .___/____/
-                                                /_/     
-                                                """)
-
+                                                /_/
+""")
+time.sleep(1)
 print("""
 Welcome To Battleship Admiral!
 We've spotted an enemy fleet in our harbour and it's up to you to sink them!
