@@ -3,7 +3,7 @@ import time
 
 
 def get_playername():
-    playername = input('Enter your name: ')
+    playername = input('Enter your name: \n')
     print('========================================================')
     return playername
 
@@ -40,7 +40,7 @@ def player_board():
     print('Where do you want to place your fleet? You have 5 ships!\n')
     print('You must choose a number(1 to 5) and a letter(A to E). Example: 1A')
     while len(fleet_battle) < 5:
-        fleet = input()
+        fleet = input('\n')
         if fleet not in board.keys():
             print('That\'s outside the battle zone')
         elif fleet in fleet_battle:
@@ -116,7 +116,7 @@ def battleship_game():
         for i in user_board:
             if turn == f'{name}':
                 print('Your Turn')
-                hit = input()
+                hit = input('\n')
                 time.sleep(1)
                 if hit in user_choice:
                     print('You hit that slot already! Focus!\n')
