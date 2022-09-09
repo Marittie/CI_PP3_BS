@@ -122,9 +122,9 @@ def battleship_game():
                     print('You hit that slot already! Focus!\n')
                 elif ai_board[hit] == '@':
                     ai_fleet -= 1
-                    print('Nice shot! Ship destroyed!')
+                    print('Nice shot! Ship destroyed!\n')
                     hit_board[hit] = 'X'
-                elif hit not in user_board.keys():
+                elif hit not in ai_board.keys():
                     print('You fired outside the war-zone. Focus!\n')
                 else:
                     print('You missed! \n')
@@ -144,7 +144,7 @@ def battleship_game():
                     print('Computer hit that slot already!\n')
                 elif user_board[hit[0]] == '@':
                     player_fleet -= 1
-                    print('Computer destoyed your ship!')
+                    print('Computer destoyed your ship!\n')
                 else:
                     print('Computer missed your ships!\n')
                 ai_choice.append(hit)
