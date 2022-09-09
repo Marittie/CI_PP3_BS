@@ -3,6 +3,9 @@ import time
 
 
 def get_playername():
+    """
+    Function to input the user name in the game
+    """
     playername = input('Enter your name: \n')
     print('========================================================')
     return playername
@@ -118,14 +121,14 @@ def battleship_game():
                 print('Your Turn')
                 hit = input('\n')
                 time.sleep(1)
-                if hit in user_choice:
+                if hit not in ai_board.keys():
+                    print('You fired outside the war-zone. Focus!\n')
+                elif hit in user_choice:
                     print('You hit that slot already! Focus!\n')
                 elif ai_board[hit] == '@':
                     ai_fleet -= 1
                     print('Nice shot! Ship destroyed!\n')
                     hit_board[hit] = 'X'
-                elif hit not in ai_board.keys():
-                    print('You fired outside the war-zone. Focus!\n')
                 else:
                     print('You missed! \n')
                     hit_board[hit] = '0'
