@@ -183,7 +183,7 @@ print("""
 """)
 time.sleep(1)
 print("""
-Welcome To Battleship Admiral!
+Welcome To Battleship Admiral!\n
 We've spotted an enemy fleet in our harbour and it's up to you to sink them!
 """)
 
