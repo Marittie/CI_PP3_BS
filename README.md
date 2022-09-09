@@ -1,7 +1,7 @@
 # Battleship
 (Developer: Mario Castaldo)
 
-![Intro](docs/intro-image/Screenshot%202022-09-09%20at%2010.47.33.png)
+![Intro](docs/intro/intro-img.png)
 
 [Live webpage](https://battleship-pp3-ci.herokuapp.com/)
 
