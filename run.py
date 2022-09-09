@@ -150,10 +150,10 @@ def battleship_game():
                 ai_choice.append(hit)
                 break
         if ai_fleet == 0:
-            print('You Won The Battle')
+            print('You Won The Battle\n')
             break
         if player_fleet == 0:
-            print('You Lost The Battle')
+            print('You Lost The Battle\n')
             break
         if turn == f'{name}':
             turn = 'Computer'
@@ -168,6 +168,7 @@ def battleship_game():
     time.sleep(1)
     play_again = input('Do you want to play again? (y/n)\n')
     if play_again == 'y':
+        print()
         battleship_game()
     else:
         print('Bye! Thanks for Playing!')
