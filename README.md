@@ -24,7 +24,6 @@
     2. [Testing user stories](#testing-user-stories)
 6. [Bugs](#Bugs)
 7. [Deployment](#deployment)
-    1. [EmailJS API](#emailjs-api)
 8. [Credits](#credits)
 9. [Acknowledgments](#acknowledgments)
 
@@ -265,13 +264,16 @@ You can clone the repository by following these steps:
 
 ### Code
 
+- Student Support for the inputs and tips about the functionality of the battleship_game function on line 97.
+- Stack Overflow on how to create 3 boards to display the different inputs.
+- Ascii Art for the Battleship ASCII art
 
 
 ## Acknowledgments
 I would like to thank:
 - My girfriend for supporting me and being so motivating
 - My friends for feedback and support
-- Student Support with their tips, knowledge and kindnesss
+- Student Support with their tips, knowledge and kindness
 
 
 
